@@ -73,4 +73,16 @@ def customer()
   return arr_obj
 end
 
+def how_many_customer()
+  sql = "SELECT tickets.* FROM tickets
+  INNER JOIN films ON films.id = tickets.film_id
+  WHERE films.title = $1
+  "
+  values = [@title]
+  arr_hashes = SqlRunner.run(sql, values)
+  arr_obj = arr_hashes.map{|a_hash| Film.new(a_hash)}
+  return arr_obj
+end
+
+
 end

@@ -76,7 +76,28 @@ def film()
   return arr_obj
 end
 
+def how_many_ticket()
+  sql = "SELECT tickets.* from tickets INNER JOIN customers
+  ON customers.id = tickets.customer_id
+  WHERE customers.name = $1"
+  values = [@name]
+  arr_hashes = SqlRunner.run(sql, values)
+  arr_obj = arr_hashes.map{|a_hash| Customer.new(a_hash)}
+  return arr_obj
+end
 
+def tickets()
+  sql = "SELECT * FROM tickets WHERE customer_id = $1"
+  values = [@id]
+  arr_hashes = SqlRunner.run(sql, values)
+  arr_obj = arr_hashes.map{|a_hash| Ticket.new(a_hash)}
+end
 
+def remaining_fund()
+  films = self.tickets()
+  film_price = films.map{|film| Film.new(film)}
+  total_price = film_price.sum
+  return @funds - total_price
+end
 
 end

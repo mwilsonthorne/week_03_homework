@@ -51,4 +51,14 @@ film1.delete()
 
 customer3.film()
 
-film3.customer()
+films = film3.customer()
+p films
+
+how_many_tickets = customer3.how_many_ticket()
+p how_many_tickets
+
+how_many_customer = film3.how_many_customer()
+p how_many_customer
+
+customer3.tickets()
+customer3.remaining_fund()
