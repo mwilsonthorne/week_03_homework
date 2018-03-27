@@ -37,8 +37,11 @@ end
 def self.all()
   sql = "SELECT * FROM customers"
   arr_hashes = SqlRunner.run(sql)
-  arr_obj = arr_hashes.map{|a_hash| Customer.new(a_hash)}
+  # arr_obj = arr_hashes.map{|a_hash| Customer.new(a_hash)}
+  arr_obj = []
+  for a_hash in arr_hashes
   return arr_obj
+  end
 end
 
 def update()
@@ -93,11 +96,11 @@ def tickets()
   arr_obj = arr_hashes.map{|a_hash| Ticket.new(a_hash)}
 end
 
-def remaining_fund()
-  films = self.tickets()
-  film_price = films.map{|film| Film.new(film)}
-  total_price = film_price.sum
-  return @funds - total_price
-end
+# def remaining_fund()
+#   films = self.tickets()
+#   film_price = films.map{|film| Film.new(film)}
+#   total_price = film_price.sum
+#   return @funds - total_price
+# end
 
 end

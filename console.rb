@@ -61,4 +61,4 @@ how_many_customer = film3.how_many_customer()
 p how_many_customer
 
 customer3.tickets()
-customer3.remaining_fund()
+# customer3.remaining_fund()

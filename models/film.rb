@@ -36,8 +36,11 @@ end
 def self.all()
   sql = "SELECT * FROM films"
   arr_hashes = SqlRunner.run(sql)
-  arr_obj = arr_hashes.map{|a_hash| Film.new(a_hash)}
+  arr_obj = []
+  for a_hash in arr_hashes
+  # arr_obj = arr_hashes.map{|a_hash| Film.new(a_hash)}
   return arr_obj
+  end
 end
 
 def update()
